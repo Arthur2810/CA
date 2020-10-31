@@ -1,17 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My first PHP, CA1</title>
-</head>
-<body>
-    <div class= "jumbotron text-center" style="margin-bottom:0">
-    <h1>Web Development </h1>
-    <h2>CA1 - PHP project 1</h2>
-        <p>Arthur Jardim, Student number: 2019376</p>
-    
-    </div>
-    
-</body>
+<?php include 'include/header.php';?>
+<html>
+    <body>
+        <div class="container" style="margin-top:auto">
+            <!-- <div class= "jumbotron text-center" style="margin-bottom:0"> -->
+
+                <h2>Web Development</h2>
+                <h2>CA1 - PHP project 1</h2>
+       
+            <!-- </div> -->
+
+            <div class="img-box">
+                <img src="coffee shop.jpg" alt="Galway Coffee shop" style="width:500px;height:600px"/>
+            </div>
+
+            <div class="text-box">
+                <p>Arthur Jardim, Student number: 2019376</p>
+            </div>
+
+        </div>
+
+<br>
+
+        <?php include 'include/footer.php'?>
+    </body>
 </html>
