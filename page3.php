@@ -1,34 +1,65 @@
-<?php include 'include/header.php';?>
+<?php include 'include/header.php'; ?>
 
-<html>
+<head>
+    <title>Associative Array</title>
+</head>
 
 <body>
 
-<form method="post" action="<?php echo $_SERVER['PHP_SELF'];?>">
-Tell me a country: <input type="text" name="cnty">
-<input type="submit">
-</form>
+    <?php
 
-<?php
-
-$contries = array("Italy" => "Rome", "Luxembourg" => "Luxembourg", "Belgium" => "Brussels", "Denmark" => "Copenhagen", "Finland" => "Helsinki", "France" => "Paris", "Slovakia" => "Bratislava", "Slovenia" => "Ljubljana", "Germany" => "Berlin", "Greece" => "Athens", "Ireland" => "Dublin", "Netherlands" => "Amsterdam", "Portugal" => "Lisbon", "Spain" => "Madrid", "Sweden" => "Stockholm", "United Kingdom" => "London", "Cyprus" => "Nicosia", "Lithuania" => "Vilnius", "Czech Republic" => "Prague", "Estonia" => "Tallin", "Hungary" => "Budapest", "Latvia" => "Riga", "Malta" => "Valetta", "Austria" => "Vienna", "Poland" => "Warsaw");
-foreach ($contries as $x => $y)
-
-if ($_SERVER ["REQUEST_METHOD"] == "POST") {
-// collect value of input field
-$x= $_POST['cnty'];
-if (empty($countries)) {
-echo "country is not listed (or could not be found).";
-} else{
-    echo $y;
-}
-}
-
-?>
+    $countries = array("Italy" => "Rome", "Luxembourg" => "Luxembourg", "Belgium" => "Brussels",
+    "Denmark" => "Copenhagen", "Finland" => "Helsinki", "France" => "Paris", "Slovakia" => "Bratislava",
+    "Slovenia" => "Ljubljana", "Germany" => "Berlin", "Greece" => "Athens", "Ireland" => "Dublin",
+    "Netherlands" => "Amsterdam", "Portugal" => "Lisbon", "Spain" => "Madrid", "Sweden" => "Stockholm",
+    "United Kingdom" => "London", "Cyprus" => "Nicosia", "Lithuania" => "Vilnius", "Czech Republic" => "Prague",
+    "Estonia" => "Tallin", "Hungary" => "Budapest", "Latvia" => "Riga", "Malta" => "Valetta", "Austria" => "Vienna",
+    "Poland" => "Warsaw", "Not listed" => "Other");
 
 
-    
+    if (!isset($_POST['submit'])) {
+    ?>
+
+
+        <form method="post" action="" align="center">
+            <div class="form-inline">
+                <p> Please, choose a city :</p>
+                <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="city">
+
+
+                    <?php
+
+                    foreach ($countries as $y) {
+                        echo "<option value=\"$y\">$y</option>\n";
+                    }
+                    ?>
+
+                </select>
+                <div class="col-auto my-1">
+                    <input class="btn btn-primary mb-2" type="submit" name="submit" value="Submit">
+
+
+                </div>
+            </div>
+        </form>
+
+
+
+
+    <?php
+
+    } else {
+
+        $capital = $_POST['city'];
+
+        $country = array_search($capital, $countries);
+
+        echo "<p>$capital is the capital of $country.</p>";
+    }
+    ?>
+
 </body>
+
 </html>
 
-<?php include 'include/footer.php';?>
+<?php include 'include/footer.php'; ?>
